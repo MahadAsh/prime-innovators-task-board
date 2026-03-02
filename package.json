@@ -1,6 +1,7 @@
 {
   "name": "prime-innovators-kanban",
   "private": true,
+  "packageManager": "bun@1.3.10",
   "workspaces": [
     "apps/*",
     "packages/*"
