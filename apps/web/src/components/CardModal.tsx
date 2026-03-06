@@ -139,7 +139,7 @@ export const CardModal = ({
                             }
                         }}
                         disabled={deleteCardMutation.isPending}
-                        className="text-destructive hover:bg-destructive/10 p-2 rounded-md transition-colors mr-20 relative z-10 -top-2"
+                        className="text-destructive hover:bg-destructive/10 p-2 rounded-md transition-colors mr-10 relative z-10 -top-5"
                         title="Delete Card"
                     >
                         <Trash2 className="w-3 h-3" />
