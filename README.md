@@ -41,7 +41,30 @@ To fulfill the simple authentication and multi-user illusion requirement, the ap
 
 We utilized unified, shared `interface` declarations in `src/types/index.ts`. Because MSW is written in TS inside the same codebase as the client React code, we achieve native end-to-end type safety. Changing a property name in the interface strictly binds both the fake MSW return JSON and the React props expecting it.
 
+### 7. Accessibility (A11y)
+
+The application prioritizes accessibility through the following implementations:
+- **Radix UI Primitives:** The modal dialogs (like the `LoginModal` and `CardModal`) are built upon Radix UI, guaranteeing focus trapping, immediate escape-key dismissal, and semantic ARIA labeling out of the box.
+- **Drag and Drop Keyboard Navigation:** The `@dnd-kit/core` implementation explicitly integrates keyboard sensors. This allows users navigating strictly via `Tab` and `Space/Enter` to pick up a Kanban card, move it across lists using the arrow keys, and drop it without a mouse.
+- **Semantic HTML & ARIA:** Interactive elements maintain proper `role` distributions and contrast ratios, utilizing cleanly visible focus rings (`focus-visible:ring-2`) and aria-descriptions for screen readers.
+
+### 8. The API Contract
+
+Although powered entirely by the MSW frontend simulation, the project adheres to a strict RESTful API contract. This proves the React components are structurally ready to be pointed toward an actual backend server at any time without needing component rewrites.
+
+| Endpoint | Method | Description |
+|---|---|---|
+| `/api/users` | `GET` | Retrieve list of all users. |
+| `/api/users` | `POST` | Create a new user (or log into existing session). |
+| `/api/boards` | `GET` | Retrieve all available Kanban boards. |
+| `/api/boards/:id` | `GET` | Retrieve a specific board populated with its associated lists and cards. |
+| `/api/cards/:id` | `PATCH` | Update a card's data (title, description, or list placement during drag-and-drop). |
+| `/api/cards/:id` | `DELETE` | Permanently remove a card from the board. |
+
 ## 🚀 Running Locally
+
+**Reproducible Environment (Flox)**
+This project includes a `.flox` directory configured with `env.json`. This guarantees that any evaluator or developer (on a supported OS/WSL) can instantly instantiate the exact versions of `bun` and `nodejs` used in development by simply running `flox activate`, eliminating "works on my machine" issues.
 
 1. Install dependencies using Bun:
    ```bash
