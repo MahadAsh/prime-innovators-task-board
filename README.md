@@ -2,7 +2,7 @@
 
 A pure frontend implementation of a collaborative Kanban-style task board, emphasizing strict architectural patterns, excellent DX, and performant state management.
 
-## 🏗️ Architecture Decisions
+## Architecture Decisions
 
 ### 1. State Management Approach
 
@@ -61,7 +61,7 @@ Although powered entirely by the MSW frontend simulation, the project adheres to
 | `/api/cards/:id` | `PATCH` | Update a card's data (title, description, or list placement during drag-and-drop). |
 | `/api/cards/:id` | `DELETE` | Permanently remove a card from the board. |
 
-## 🚀 Running Locally
+## Running Locally
 
 **Reproducible Environment (Flox)**
 This project includes a `.flox` directory configured with `env.json`. This guarantees that any evaluator or developer (on a supported OS/WSL) can instantly instantiate the exact versions of `bun` and `nodejs` used in development by simply running `flox activate`, eliminating "works on my machine" issues.
